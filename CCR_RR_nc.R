@@ -75,7 +75,7 @@ all_sample_nc <- read.csv("CCR_final_nc_new.csv",
 ## tabulate videos by account type
 tab <- data.frame(table(all_sample_nc$account_type))
 ## get the unique accounts and tabulate by account type
-account_unique_nc <- all_sample_nc[!duplicated(all_sample_nc$VID),]
+account_unique_nc <- all_sample_nc[!duplicated(all_sample_nc$account_hash),]
 account_unique_nc <- data.frame(table(account_unique_nc$account_type))
 ## merge with the video by account table and calculate the ratio
 all_sample_type <- left_join(tab, account_unique_nc, by = "Var1")
@@ -106,7 +106,7 @@ ggplot(all_sample_type, aes(x=account_type, y=videos_ratio, fill = account_type)
 ## find all regime-related videos
 all_sample_regime_nc <- all_sample_nc[all_sample_nc$account_type=="regime accounts",]
 ## find all unique regime-related accounts and tabulate
-account_unique_regime_nc <- subset(all_sample_regime_nc, !duplicated(VID))
+account_unique_regime_nc <- subset(all_sample_regime_nc, !duplicated(account_hash))
 account_unique_regime_nc <- data.frame(table(account_unique_regime_nc$regime_acct_type))
 tab <- data.frame(table(all_sample_regime_nc$regime_acct_type))
 account_unique_regime_nc <- left_join(tab, account_unique_regime_nc, by = "Var1")
