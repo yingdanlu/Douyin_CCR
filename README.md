@@ -8,12 +8,10 @@
 
 # Variable descriptions:
 <ins>Variables from metadata</ins>
-<br />video_id: id of the videos
 <br />create_date: creation date of the video
 <br />create_time: creation time of the video
 <br />duration: video length
 <br />topic_name: trending topic that the video relates to
-<br />uid: id of the user
 
 <ins>Variables extraced from videos</ins>
 <br />frame_numbers: total number of frames contained in a video
