@@ -46,16 +46,12 @@ vis <- function(dt, accounts, variable){
 }
 
 #### read data ####
-all_sample_nc <- read.csv("CCR_final_nc.csv",
+all_sample_nc <- read.csv("CCR_final_nc_new.csv",
                        colClasses=c(rep("character",3),
-                                    rep("numeric",5),
-                                    rep("character",3),
-                                    rep("numeric",11),
-                                    "character", 
-                                    rep("numeric",5), 
-                                    rep("character",5),  
                                     "numeric",
-                                    rep("character",2)), 
+                                    "character",
+                                    rep("numeric",11),
+                                    rep("character",6)), 
                        stringsAsFactors = F)
 
 ####################################################################################
@@ -66,10 +62,7 @@ all_sample_nc <- read.csv("CCR_final_nc.csv",
 ## tabulate videos by account type
 tab <- data.frame(table(all_sample_nc$account_type2))
 ## get the unique accounts and tabulate by account type
-account_unique_nc <- all_sample_nc %>% 
-  group_by(uid) %>% 
-  arrange(desc(follower, aweme)) %>% 
-  slice(1)
+account_unique_nc <- all_sample_nc[!duplicated(all_sample_nc$uid),]
 account_unique_nc <- data.frame(table(account_unique_nc$account_type2))
 ## merge with the video by account table and calculate the ratio
 all_sample_type <- left_join(tab, account_unique_nc, by = "Var1")
