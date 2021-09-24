@@ -46,7 +46,7 @@ vis <- function(dt, accounts, variable){
 }
 
 #### read data ####
-all_sample_nc <- read.csv("CCR_final_nc_new.csv",
+all_sample_nc <- read.csv("CCR_final_nc.csv",
                        colClasses=c(rep("character",3),
                                     "numeric",
                                     "character",
