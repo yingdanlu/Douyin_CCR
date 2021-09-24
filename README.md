@@ -33,5 +33,5 @@ Variables from the visual analysis
 <br />face_binary: number of frames containing faces
 <br />warmth: warm color dominance score
 <br />cold: cold color dominance score
-<br />face_rate: face presence
+<br />face_rate: proportion of frames that contain faces
 
