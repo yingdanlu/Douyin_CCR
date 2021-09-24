@@ -50,7 +50,7 @@ all_sample_nc <- read.csv("CCR_final_nc_new.csv",
                        colClasses=c(rep("character",3),
                                     "numeric",
                                     "character",
-                                    rep("numeric",11),
+                                    rep("numeric",9),
                                     rep("character",6)), 
                        stringsAsFactors = F)
 
