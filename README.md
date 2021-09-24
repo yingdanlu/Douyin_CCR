@@ -25,8 +25,8 @@
 <br />face_rate: proportion of frames that contain faces
 
 <ins>Variables from human coding</ins>
-<br />account_type: type of the account (combines gov/ccp and state media accounts into regime-affiliated accounts)
-<br />regime_acct_type: type of the account with regime accounts further categorized
+<br />account_type: type of the account
+<br />regime_acct_type: further disaggregates regime-affiliated accounts
 <br />topic_category: category of the trending topic
 <br />covid: whether a topic relates to covid-19
 
