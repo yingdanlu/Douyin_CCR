@@ -12,14 +12,8 @@ Variables from metadata
 <br />create_date: creation date of the video
 <br />create_time: creation time of the video
 <br />duration: video length
-<br />topic_name: topic that the video is attached
+<br />topic_name: trending topic that the video relates to
 <br />uid: id of the user
-<br />account_type: type of the account (combined regime accounts and official media accounts)
-<br />newspaper_ch: Chinese name of the newspaper
-<br />daily: whether a state media account is a daily newspaper
-<br />account_type2: type of the account with new coding rules
-<br />topic_category: category of the topic
-<br />covid: whether a topic is related to covid-19
 
 Variables extraced from videos
 <br />frame_numbers: total number of frames contained in a video
@@ -30,4 +24,13 @@ Variables extraced from videos
 <br />warmth: warm color dominance score
 <br />cold: cold color dominance score
 <br />face_rate: proportion of frames that contain faces
+
+Variables from human coding
+<br />account_type: type of the account
+<br />account_type2: type of the account (combines gov/ccp and state media accounts into regime-affiliated accounts)
+<br />newspaper_ch: Chinese name of all newspaper accounts
+<br />daily: whether newspapers is a daily (日报), which means it is a mouthpiece newspaper
+<br />topic_category: category of the trending topic
+<br />covid: whether a topic relates to covid-19
+
 
