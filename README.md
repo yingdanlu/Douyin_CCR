@@ -2,9 +2,12 @@
 
 Replication files for *The Pervasive Presence of Chinese GovernmentContent on Douyin Trending Videos* (R&R, *Computational Communication Research*)
 
-This repo contains one folder, one data file, and two code files. 
+We went through three steps to finish the final results. 
 
-1. *videos_sample* folder contains five example videos to test on the code for feature extraction.
-2. *CCR_final_nc.csv* is the dataset used for main analysis.
-3. *feature_final.py* is used to extract visual features from the videos
-4. *CCR_RR_nc.R* is used for replicating all plots and tables in the main analysis, using the *CCR_final_nc.csv* data.
+Step 1: We collected metadata and video data of the Douyin Trending videos, and all data used for this study are stored in *CCR_final_nc.csv*
+
+Step 2: For video data, we extract visual features through the code *feature_final.py*. We also provided five videos to test on the code.
+
+Step 3: Using all metadata and results from visual analysis, we created all figures and tables through *CCR_RR_nc.R*.
+
+Variable descriptions can be seen in *variables_readme.txt*
