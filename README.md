@@ -12,6 +12,7 @@
 <br />create_time: creation time of the video
 <br />duration: video length
 <br />topic_name: trending topic that the video relates to
+<br />account_hash: hashed id of the account
 
 <ins>Variables extraced from videos</ins>
 <br />frame_numbers: total number of frames contained in a video
@@ -24,10 +25,8 @@
 <br />face_rate: proportion of frames that contain faces
 
 <ins>Variables from human coding</ins>
-<br />account_type: type of the account
-<br />account_type2: type of the account (combines gov/ccp and state media accounts into regime-affiliated accounts)
-<br />newspaper_ch: Chinese name of all newspaper accounts
-<br />daily: whether newspapers is a daily (日报), which means it is a mouthpiece newspaper
+<br />account_type: type of the account (combines gov/ccp and state media accounts into regime-affiliated accounts)
+<br />regime_acct_type: type of the account with regime accounts further categorized
 <br />topic_category: category of the trending topic
 <br />covid: whether a topic relates to covid-19
 
