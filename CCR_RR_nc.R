@@ -3,20 +3,32 @@
 ####################################################################################
 
 #### wd and packages ####
-setwd("//Volumes/GoogleDrive/My Drive/Yingdan/Research/JEN/Douyin/")
-
+setwd(".")
+#install.packages("dplyr")
 library(dplyr)
+#install.packages("readr")
 library(readr)
+#install.packages("extrafont")
 library(extrafont)
+#install.packages("psych")
 library(psych)
+#install.packages("xtable")
 library(xtable)
+#install.packages("ggplot2")
 library(ggplot2)
+#install.packages("grid")
 library(grid)
+#install.packages("gridExtra")
 library(gridExtra)
+#install.packages("ggpubr")
 library(ggpubr)
+#install.packages("scales")
 library(scales)
+#install.packages("lubridate")
 library(lubridate)
+#install.packages("reshape2")
 library(reshape2)
+#install.packages("boot")
 library(boot)
 loadfonts()
 
@@ -36,7 +48,7 @@ boot.results <- function(variable){
 vis <- function(dt, accounts, variable){
   mat <- data.frame(NA, 4, 4)
   for (i in 1:4){
-    m <- boot.results(dt[dt$account_type2 == accounts[i], variable])
+    m <- boot.results(dt[dt$account_type == accounts[i], variable])
     mat[i,1] <- accounts[i]
     mat[i,2] <- round(m[1],4)
     mat[i,3] <- round(m[2],4)
@@ -46,13 +58,14 @@ vis <- function(dt, accounts, variable){
 }
 
 #### read data ####
-all_sample_nc <- read.csv("CCR_final_nc.csv",
-                       colClasses=c(rep("character",3),
+all_sample_nc <- read.csv("CCR_final_nc_new.csv",
+                       colClasses=c(rep("character",2),
                                     "numeric",
                                     "character",
                                     rep("numeric",9),
-                                    rep("character",6)), 
+                                    rep("character",4)), 
                        stringsAsFactors = F)
+
 
 ####################################################################################
 ## Figure 3 and Table 1
@@ -60,10 +73,10 @@ all_sample_nc <- read.csv("CCR_final_nc.csv",
 
 #### Figure 3 ####
 ## tabulate videos by account type
-tab <- data.frame(table(all_sample_nc$account_type2))
+tab <- data.frame(table(all_sample_nc$account_type))
 ## get the unique accounts and tabulate by account type
-account_unique_nc <- all_sample_nc[!duplicated(all_sample_nc$uid),]
-account_unique_nc <- data.frame(table(account_unique_nc$account_type2))
+account_unique_nc <- all_sample_nc[!duplicated(all_sample_nc$VID),]
+account_unique_nc <- data.frame(table(account_unique_nc$account_type))
 ## merge with the video by account table and calculate the ratio
 all_sample_type <- left_join(tab, account_unique_nc, by = "Var1")
 colnames(all_sample_type) <- c("account_type", "videos", "accounts")
@@ -91,18 +104,11 @@ ggplot(all_sample_type, aes(x=account_type, y=videos_ratio, fill = account_type)
 
 #### Table 1 ####
 ## find all regime-related videos
-all_sample_regime_nc <- all_sample_nc[all_sample_nc$account_type2=="regime accounts",]
-## differentiating different types of regime-related media
-all_sample_regime_nc$account_type3 <- ifelse(
-  all_sample_regime_nc$account_type == "official media" & 
-    all_sample_regime_nc$daily == 1, "Mouthpiece\nNewspaper", 
-  ifelse(all_sample_regime_nc$account_type == "official media" & 
-           !is.na(all_sample_regime_nc$newspaper_ch), "Non-\nMouthpiece\nNewspaper", 
-         ifelse(all_sample_regime_nc$account_type == "official media", "Other\nOfficial\nMedia", "Government\nCCP")))
+all_sample_regime_nc <- all_sample_nc[all_sample_nc$account_type=="regime accounts",]
 ## find all unique regime-related accounts and tabulate
-account_unique_regime_nc <- subset(all_sample_regime_nc, !duplicated(uid))
-account_unique_regime_nc <- data.frame(table(account_unique_regime_nc$account_type3))
-tab <- data.frame(table(all_sample_regime_nc$account_type3))
+account_unique_regime_nc <- subset(all_sample_regime_nc, !duplicated(VID))
+account_unique_regime_nc <- data.frame(table(account_unique_regime_nc$regime_acct_type))
+tab <- data.frame(table(all_sample_regime_nc$regime_acct_type))
 account_unique_regime_nc <- left_join(tab, account_unique_regime_nc, by = "Var1")
 colnames(account_unique_regime_nc) <- c("account_type", "videos", "accounts")
 account_unique_regime_nc$rate <- account_unique_regime_nc$videos / account_unique_regime_nc$accounts
@@ -112,7 +118,7 @@ account_unique_regime_nc
 ## Figure 4
 ####################################################################################
 ## get a list of account types
-accounts <- unique(all_sample_nc$account_type2)
+accounts <- unique(all_sample_nc$account_type)
 
 ## calculate the mean value of visual features and ci through bootstrapping
 luminance <- vis(all_sample_nc, accounts, "luminance_avg")
@@ -175,11 +181,11 @@ ggarrange(g1, g2, nrow = 2, align = "h")
 ####################################################################################
 ## tabulate the proportion of topics by accounts
 tb <- as.data.frame(
-  prop.table(table(all_sample_nc$account_type2,all_sample_nc$topic_category),1))
+  prop.table(table(all_sample_nc$account_type,all_sample_nc$topic_category),1))
 
 ## rename for plotting
 tb$Var1 <- recode(tb$Var1, 
-                  celebrities = "Celebrities",
+                  "celebrities" = "Celebrities",
                   "non-official media" = "Non-Official\nMedia",
                   "ordinary users" = "Ordinary\nUsers",
                   "regime accounts" = "Regime\nAffiliated")
@@ -210,10 +216,15 @@ p
 
 ## tabulate the proportion of topics by regime-affiliated accounts
 tb <- as.data.frame(prop.table(table(
-  all_sample_regime_nc$account_type3,
+  all_sample_regime_nc$regime_acct_type,
   all_sample_regime_nc$topic_category),1))
 
 ## rename for plotting
+tb$Var1 <- recode(tb$Var1, 
+                  "Government CCP" = "Government\nCCP",
+                  "Mouthpiece Newspaper" = "Mouthpiece\nNewspaper",
+                  "Non-Mouthpiece Newspaper" = "Non-\nMouthpiece\nNewspaper",
+                  "Other Official Media" = "Other\nOfficial\nMedia")
 tb$Var2 <- factor(tb$Var2, levels = c("Propaganda", "Positive energy",
                                       "Human interest", "Breaking news", 
                                       "Business news", "Entertainment"))
@@ -247,7 +258,7 @@ ggarrange(p,q, common.legend = T)
 ## Figure 6 and Figure S6
 ####################################################################################
 # Figure S6: Bimodal distribution of regime-affiliated content by topic
-all_sample_nc$propaganda <- ifelse(all_sample_nc$account_type2 == "regime accounts", 1, 0)
+all_sample_nc$propaganda <- ifelse(all_sample_nc$account_type == "regime accounts", 1, 0)
 topic_sample <- all_sample_nc %>%
   group_by(topic_name) %>%
   summarise(
@@ -285,10 +296,15 @@ all_sample_nc_regime2 <- all_sample_nc_regime2[all_sample_nc_regime2$type == "go
 
 ## tabulate
 tb <- as.data.frame(prop.table(table(
-  all_sample_nc_regime2$account_type3,
+  all_sample_nc_regime2$regime_acct_type,
   all_sample_nc_regime2$topic_category),1))
 
 ## rename for plotting
+tb$Var1 <- recode(tb$Var1, 
+                  "Government CCP" = "Government\nCCP",
+                  "Mouthpiece Newspaper" = "Mouthpiece\nNewspaper",
+                  "Non-Mouthpiece Newspaper" = "Non-\nMouthpiece\nNewspaper",
+                  "Other Official Media" = "Other\nOfficial\nMedia")
 tb$Var2 <- factor(tb$Var2, levels = c("Propaganda", "Positive energy",
                                       "Human interest", "Breaking news", 
                                       "Business news", "Entertainment"))
