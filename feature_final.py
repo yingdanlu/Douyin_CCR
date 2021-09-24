@@ -110,15 +110,14 @@ def feature_extract(video, frames_per_slice = 6):
                   dominant_color.count('teal'))/ len(luminance)    
     # Return the output
     return [str(video.split('.mp4')[0]), frame_count, len(luminance), np.mean(luminance), 
-            np.median(luminance), np.mean(entropy_store), np.median(entropy_store), face_count_binary,
-           warmth, cold] 
+            np.mean(entropy_store), face_count_binary, warmth, cold] 
 
 def main():
 # Start a csv to store the results
-    a=open('videos_sample_outputs.csv','w',1)
+    a=open('CCR_final_nc_visual.csv','w',1)
     w=csv.writer(a)
-    fieldnames=['video_id', 'frame_numbers', 'frame_numbers_sampled','luminance_avg','luminance_med', 'entropy_avg', 
-                'entropy_med', 'face_binary', 'warmth', 'cold']
+    fieldnames=['video_id', 'frame_numbers', 'frame_numbers_sampled','luminance_avg','entropy_avg', 
+                'face_binary', 'warmth', 'cold']
     w.writerow(fieldnames)
 
     # Redirect to the video folder
