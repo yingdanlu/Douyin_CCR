@@ -1,17 +1,13 @@
-# Repo Readme
+### Repo Readme
 
-Replication files for *The Pervasive Presence of Chinese GovernmentContent on Douyin Trending Videos* (R&R, *Computational Communication Research*)
+## This repo contains:
 
-### Three steps to facilitate the analysis. 
+1) Raw video data to dataset processing: 5 sample video files so that *feature_final.py* can be run to produce the first eight columns of *CCR_final_nc_visual.csv* (for our paper, we ran *feature_final.py* on all video files to generate the video-related features of *CCR_final_nc.csv*; all other columns of *CCR_final_nc.csv* were directly obtained in the data gathering process).
 
-Step 1: We collected metadata and video data of the Douyin Trending videos, and all data used for this study are stored in *CCR_final_nc.csv*
+2) Replication files: replication data, *CCR_final_nc.csv*, and code, *CCR_RR_nc.R*, to produce all figures and tables in *The Pervasive Presence of Chinese Government Content on Douyin Trending Videos* (*Computational Communication Research*)
 
-Step 2: For video data, we extract visual features through the code *feature_final.py*. We also provided five videos to test on the code and the outputs can be seen in *CCR_final_nc_visual.csv* (the first eight columns).
-
-Step 3: Using all metadata and results from visual analysis, we created all figures and tables through *CCR_RR_nc.R*.
-
-### Variable descriptions:
-Variables from the metadata
+## Variable descriptions:
+Variables from metadata
 <br />video_id: id of the videos
 <br />create_date: creation date of the video
 <br />create_time: creation time of the video
@@ -25,7 +21,7 @@ Variables from the metadata
 <br />topic_category: category of the topic
 <br />covid: whether a topic is related to covid-19
 
-Variables from the visual analysis
+Variables extraced from videos
 <br />frame_numbers: total number of frames contained in a video
 <br />frame_numbers_sampled: total number of frames used for analysis
 <br />luminance_avg: video brightness
