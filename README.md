@@ -2,7 +2,7 @@
 
 # This repo contains:
 
-1) Raw video data to dataset processing: 5 sample video files so that *feature_final.py* can be run to produce *CCR_final_nc_visual.csv* (for our paper, we ran *feature_final.py* on all video files to generate the video-related features of *CCR_final_nc_new.csv*; all other columns of *CCR_final_nc_new.csv* were directly obtained in the data gathering process or based on human coding).
+1) Raw video data to dataset processing: 4 example video files so that *feature_final.py* can be run to produce *CCR_final_nc_visual.csv* (for our paper, we ran *feature_final.py* on all video files to generate the video-related features of *CCR_final_nc_new.csv*; all other columns of *CCR_final_nc_new.csv* were directly obtained in the data gathering process or based on human coding).
 
 2) Replication files: replication data, *CCR_final_nc_new.csv*, and code, *CCR_RR_nc.R*, to produce all figures and tables in *The Pervasive Presence of Chinese Government Content on Douyin Trending Videos* (*Computational Communication Research*)
 
