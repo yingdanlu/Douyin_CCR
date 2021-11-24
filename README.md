@@ -6,7 +6,7 @@
 
 2) Replication files: replication data, *CCR_final_nc_new.csv*, and code, *CCR_RR_nc.R*, to produce all figures and tables in *The Pervasive Presence of Chinese Government Content on Douyin Trending Videos* (*Computational Communication Research*)
 
-# Variable descriptions:
+## Variable descriptions:
 <ins>Variables from metadata</ins>
 <br />create_date: creation date of the video
 <br />create_time: creation time of the video
@@ -30,4 +30,4 @@
 <br />topic_category: category of the trending topic
 <br />covid: whether a topic relates to covid-19
 
-
+## Citation:
