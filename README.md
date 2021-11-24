@@ -31,3 +31,9 @@
 <br />covid: whether a topic relates to covid-19
 
 ## Citation:
+@article{lupan2021pervasive,
+  title={The Pervasive Presence of Chinese Government Content on Douyin Trending Videos},
+  author={Lu, Yingdan and Pan, Jennifer},
+  journal={Computational Communication Research},
+  year={Forthcoming}
+}
