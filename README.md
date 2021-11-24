@@ -1,4 +1,4 @@
-## Repo Readme
+# Repo Readme
 ## Github repo for *The Pervasive Presence of Chinese Government Content on Douyin Trending Videos*
 ## This repo contains:
 
