@@ -1,5 +1,5 @@
 ## Repo Readme
-# Github repo for <i>The Pervasive Presence of Chinese Government Content on Douyin Trending Videos< /i>
+# Github repo for <i>The Pervasive Presence of Chinese Government Content on Douyin Trending Videos<i />
 # This repo contains:
 
 1) Raw video data to dataset processing: 4 example video files so that *feature_final.py* can be run to produce *CCR_final_nc_visual.csv* (for our paper, we ran *feature_final.py* on all video files to generate the video-related features of *CCR_final_nc_new.csv*; all other columns of *CCR_final_nc_new.csv* were directly obtained in the data gathering process or based on human coding).
