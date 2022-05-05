@@ -32,10 +32,14 @@
 
 ## Citation:
 ```
-@article{lupan2021pervasive,
+@article{lu2022pervasive,
   title={The Pervasive Presence of Chinese Government Content on Douyin Trending Videos},
   author={Lu, Yingdan and Pan, Jennifer},
   journal={Computational Communication Research},
-  year={Forthcoming}
+  volume={4},
+  number={1},
+  year={2022},
+  pages={68--97},
+  publisher={Amsterdam University Press}
 }
 ```
